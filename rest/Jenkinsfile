@@ -10,11 +10,7 @@ pipeline {
                 sh 'gradle init'
                 sh 'gradle wrapper'
                 sh './gradlew build'
-            }
-        }
-         stage('Test') {
-            steps {
-                sh './gradlew test'
+                sh 'gradle assemble'
             }
         }
         stage('Build Docker Image') {
