@@ -7,8 +7,8 @@ pipeline {
         stage('Build') {
             steps {
                 //sh 'gradle build --info'
-                sh 'gradle task'
-                sh 'gradle init'
+                bat 'gradle task'
+                bat 'gradle init'
                 bat 'gradle wrapper'
                 bat './gradlew build'
                 bat 'gradle assemble'
