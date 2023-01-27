@@ -1,36 +1,5 @@
-pipeline {
-    agent any
-    tools {
-        gradle 'Gradle 7.5.1' 
-    }
-    stages {
-        stage('Build') {
-            steps {
-                //sh 'gradle build --info'
-                sh 'gradle task'
-                sh 'gradle init'
-                sh 'gradle wrapper'
-                sh './gradlew build'
-                sh 'gradle assemble'
-            }
-        }
-        stage('test') {
-            steps {
-                //sh 'gradle docker'
-                echo 'test succesfull'
-            }
-        }
-        stage('Build Docker Image') {
-            steps {
-                //sh 'gradle docker'
-                echo 'succesfull'
-            }
-        }
-        stage('Run Docker Image') {
-            steps {
-                //sh 'gradle dockerRun'
-                echo 'succesfull'
-            }
-        }
-    }
+node {
+    git url: 'https://github.com/Nerack15/micro.git'
+    def gradleHome = tool 'Gradle'
+    sh "${gradleHome}/bin/gradle clean build -x test"
 }
