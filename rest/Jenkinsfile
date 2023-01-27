@@ -26,9 +26,9 @@ pipeline {
                 echo 'succesfull'
             }
         }
-        stage('Run Docker Image') {
+        stage('Push Docker Image') {
             steps {
-                //sh 'gradle dockerRun'
+                //sh 'gradle dockerPush'
                 echo 'succesfull'
             }
         }
