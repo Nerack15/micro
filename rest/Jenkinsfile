@@ -9,7 +9,7 @@ pipeline {
                 sh 'gradle task'
                 sh 'gradle init'
                 sh 'gradle wrapper'
-                sh 'gradle assemble'
+                sh './gradlew build'
             }
         }
          stage('Test') {
