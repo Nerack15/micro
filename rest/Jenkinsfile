@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                git 'https://github.com/Nerack15/micro.git'
                 sh 'gradle task'
                 sh 'gradle init'
                 sh 'gradle wrapper'
