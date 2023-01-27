@@ -6,12 +6,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'gradle build --info'
-                //sh 'gradle task'
-                //sh 'gradle init'
-                //sh 'gradle wrapper'
-                //sh './gradlew build'
-                //sh 'gradle assemble'
+                //sh 'gradle build --info'
+                sh 'gradle task'
+                sh 'gradle init'
+                bat 'gradle wrapper'
+                bat './gradlew build'
+                bat 'gradle assemble'
             }
         }
         stage('test') {
