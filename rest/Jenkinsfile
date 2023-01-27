@@ -2,17 +2,16 @@ pipeline {
     agent any
     tools {
         gradle 'Gradle 7.5.1' 
-        git 'repo'
     }
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/Nerack15/micro.git'
-                sh 'gradle task'
-                sh 'gradle init'
-                sh 'gradle wrapper'
-                sh './gradlew build'
-                sh 'gradle assemble'
+                sh 'gradle build --info'
+                //sh 'gradle task'
+                //sh 'gradle init'
+                //sh 'gradle wrapper'
+                //sh './gradlew build'
+                //sh 'gradle assemble'
             }
         }
         stage('test') {
