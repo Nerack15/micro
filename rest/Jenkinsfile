@@ -10,7 +10,8 @@ pipeline {
                 sh 'gradle init'
                 sh 'gradle wrapper'
                 sh './gradlew build'
-                //sh 'gradle assemble'
+                sh 'java -jar ./build/libs/rest-1.0.jar'
+                sh 'gradle assemble'
             }
         }
         stage('test') {
