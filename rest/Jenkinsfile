@@ -7,11 +7,11 @@ pipeline {
         stage('Build') {
             steps {
                 //sh 'gradle build --info'
-                bat 'gradle task'
-                bat 'gradle init'
-                bat 'gradle wrapper'
-                bat './gradlew build'
-                bat 'gradle assemble'
+                sh 'gradle task'
+                sh 'gradle init'
+                sh 'gradle wrapper'
+                sh './gradlew build'
+                sh 'gradle assemble'
             }
         }
         stage('test') {
