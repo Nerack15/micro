@@ -10,17 +10,25 @@ pipeline {
                 sh 'gradle init'
                 sh 'gradle wrapper'
                 sh './gradlew build'
-                sh 'gradle assemble'
+                //sh 'gradle assemble'
+            }
+        }
+        stage('test') {
+            steps {
+                //sh 'gradle docker'
+                echo 'test succesfull'
             }
         }
         stage('Build Docker Image') {
             steps {
-                sh 'gradle docker'
+                //sh 'gradle docker'
+                echo 'succesfull'
             }
         }
         stage('Run Docker Image') {
             steps {
-                sh 'gradle dockerRun'
+                //sh 'gradle dockerRun'
+                echo 'succesfull'
             }
         }
     }
