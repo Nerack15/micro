@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'ls -la'
-                sh 'cd rest/'
+                sh 'cd ${WORKSPACE}/rest/'
                 sh 'ls -la'
             }
         }
