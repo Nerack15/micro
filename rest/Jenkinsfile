@@ -8,6 +8,7 @@ pipeline {
             steps {
                 sh 'ls -la'
                 sh 'cd rest/'
+                sh 'ls -la'
             }
         }
         stage('test') {
