@@ -3,34 +3,8 @@ pipeline {
     tools {
         gradle 'Gradle 7.5.1' 
     }
-    stages {
-        stage('Build') {
-            steps {
-              node {
-                withGradle {
-                  sh './gradlew build'
-          }
-    }
-
-            }
-        }
-        stage('test') {
-            steps {
-                //sh 'gradle docker'
-                echo 'test succesfull'
-            }
-        }
-        stage('Build Docker Image') {
-            steps {
-                //sh 'gradle docker'
-                echo 'succesfull'
-            }
-        }
-        stage('Push Docker Image') {
-            steps {
-                //sh 'gradle dockerPush'
-                echo 'succesfull'
-            }
-        }
-    }
+node {
+  withGradle {
+    sh './gradlew build'
+  }
 }
