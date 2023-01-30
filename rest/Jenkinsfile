@@ -6,11 +6,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'build'
                 //sh 'gradle task'
                 //sh 'gradle init'
                 //sh 'gradle wrapper'
-                //sh './gradlew build'
+                sh './gradlew build'
                 //sh 'gradle assemble'
                 echo 'Build melo'
             }
