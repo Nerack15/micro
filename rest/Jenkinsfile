@@ -1,19 +1,36 @@
 pipeline {
-    agent {
-        docker {
-            image 'openjdk:8-jdk'
-        }
-    }
-    stages {
-        stage('Clone') {
-            steps {
-                git 'https://github.com/user/mi-proyecto.git'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh './gradlew build'
-            }
-        }
-    }
+    agent any
+    tools {
+        gradle 'Gradle 7.5.1' 
+    }
+    stages {
+        stage('Build') {
+            steps {
+              node {
+                withGradle {
+                  sh './gradlew build'
+          }
+    }
+
+            }
+        }
+        stage('test') {
+            steps {
+                //sh 'gradle docker'
+                echo 'test succesfull'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                //sh 'gradle docker'
+                echo 'succesfull'
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                //sh 'gradle dockerPush'
+                echo 'succesfull'
+            }
+        }
+    }
 }
