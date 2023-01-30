@@ -8,8 +8,7 @@ pipeline {
             steps {
                 //sh './gradlew build'
                 //sh 'gradle assemble'
-                sh 'pwd'
-                sh './gradlew build'
+                sh './gradlew build --scan'
             }
         }
         stage('test') {
