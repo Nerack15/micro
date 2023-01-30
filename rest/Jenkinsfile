@@ -1,26 +1,38 @@
 pipeline {
-    agent any {
-        docker {
-            image 'docker:19.03.12'
-        }
-    }
-    stages {
-        stage('Clone') {
-            steps {
-                git 'https://github.com/Nerack15/micro.git'
-            }
-        }
-        stage('Build Image') {
-            steps {
-                sh 'docker build -t mi-proyecto .'
-            }
-        }
-        stage('Push Image') {
-            steps {
-                sh 'docker login -u $DOCKER_USER -p $DOCKER_PASSWORD'
-                sh 'docker tag mi-proyecto $DOCKER_USER/mi-proyecto'
-                sh 'docker push $DOCKER_USER/mi-proyecto'
-            }
-        }
-    }
+    agent any
+    tools {
+        gradle 'Gradle 7.5.1' 
+    }
+    stages {
+        stage('Build') {
+            steps {
+                //sh 'gradle init'
+                //sh 'gradle task'
+                //sh './gradlew run'
+                //sh 'gradle init'
+                //sh 'gradle wrapper'
+                //sh './gradlew build'
+                //sh 'gradle assemble'
+                sh 'Build'
+            }
+        }
+        stage('test') {
+            steps {
+                //sh 'gradle docker'
+                echo 'test succesfull'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                //sh 'gradle docker'
+                echo 'succesfull'
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                //sh 'gradle dockerPush'
+                echo 'succesfull'
+            }
+        }
+    }
 }
