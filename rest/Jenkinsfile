@@ -7,8 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 //sh './gradlew build'
-                //sh 'gradle assemble'
-                sh 'cd rest/'
+                sh './gradlew build'
                 sh './gradlew build --scan'
             }
         }
