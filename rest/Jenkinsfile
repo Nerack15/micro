@@ -4,14 +4,7 @@ pipeline {
         gradle 'Gradle 7.5.1' 
     }
     stages {
-        stage ('Test & Build Artifact') {
-            agent {
-                docker {
-                    image 'openjdk:11'
-                    args '-v "$PWD":/rest'
-                    reuseNode true
-                }
-            }
+        stage('Build')
             steps {
                 sh './gradlew clean build'
             }
