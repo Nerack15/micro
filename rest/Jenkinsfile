@@ -7,6 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'gradle init'
+                sh 'gradle task'
                 sh './gradlew run'
                 //sh 'gradle init'
                 //sh 'gradle wrapper'
