@@ -17,9 +17,9 @@ pipeline {
         }
         stage('Push Image') {
             steps {
-                //sh 'docker login -u $DOCKER_USER -p $DOCKER_PASSWORD'
-                //sh 'docker tag mi-proyecto $DOCKER_USER/mi-proyecto'
-                //sh 'docker push $DOCKER_USER/mi-proyecto'
+                sh 'docker login -u nerack -p Sergioluiscm0509'
+                sh 'docker tag mi-proyecto $DOCKER_USER/mi-proyecto'
+                sh 'docker push nerack/mi-proyecto'
             }
         }
     }
