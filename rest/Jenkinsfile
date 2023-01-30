@@ -9,7 +9,7 @@ pipeline {
                 //sh './gradlew build'
                 //sh 'gradle assemble'
                 sh 'pwd'
-                sh 'Build'
+                sh './gradlew build'
             }
         }
         stage('test') {
