@@ -8,7 +8,7 @@ pipeline {
             steps {
                 //sh './gradlew build'
                 //sh 'gradle assemble'
-                sh '${WORKSPACE}/rest'
+                sh 'cd ${WORKSPACE}/rest'
                 sh 'Build'
             }
         }
