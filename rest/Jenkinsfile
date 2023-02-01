@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools {
         gradle 'Gradle 7.5.1'
-        dockerTool 'Docker'
     }
     stages {
         stage('Build') {
@@ -28,12 +27,9 @@ pipeline {
                       cd rest
                       docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
                       docker build -t test/test:1.0 .
+                      docker push $DOCKER_USER/test:1.0
                       """
                       }
-                //sh 'gradle docker'
-                //sh 'docker login -u $DOCKER_USER -p $DOCKER_PASSWORD'
-                //sh 'docker tag mi-proyecto $DOCKER_USER/mi-proyecto'
-                //sh 'docker push $DOCKER_USER/mi-proyecto'
                 echo 'succesfull'
             }
         }
