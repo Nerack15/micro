@@ -1,8 +1,15 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ms
+  
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rest
-  namespace: ingress-nginx
+  namespace: ms
 spec:
   selector:
     matchLabels:
@@ -15,7 +22,7 @@ spec:
     spec:
       containers:
         - name: rest
-          image: rest:1.0
+          image: nerack/test:1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -25,13 +32,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: serviciorest
-  namespace: ingress-nginx
+  namespace: ms
 spec:
   ports:
     - protocol: "TCP"
       port: 8080       # The port inside the cluster
       targetPort: 8080  # The port exposed by the service
-  type: NodePort        # Type of service
+  type: LoadBalancer       # Type of service
   selector:
     app: rest
 
