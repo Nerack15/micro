@@ -10,6 +10,6 @@ import com.semillero.rest.dto.internal.ResponseData;
 public class RestController {
     @GetMapping("/rest")
     public ResponseEntity<ResponseData> getMessage(){
-        return ResponseEntity.ok(ResponseData.builder().code(200).mensaje("Hola mundo, este es un nuevo mensaje para probar el gradlew build").build());
+        return ResponseEntity.ok(ResponseData.builder().code(200).mensaje("Hola mundo, este es el rest").build());
     }
 }
