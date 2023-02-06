@@ -20,7 +20,7 @@ pipeline {
                 echo 'test succesfull'
             }
         }
-        stage('Build Docker Image') {
+        stage('Build & Push Docker Image') {
             steps {
                 script{
                     sh"""
@@ -33,10 +33,11 @@ pipeline {
                 echo 'succesfull'
             }
         }
-        stage('Push Docker Image') {
+        stage('Deployment') {
             steps {
-                //sh 'gradle dockerPush'
-                echo 'succesfull'
+                sh """
+                az login -u $AZ_USER -p $AZ_PASS
+                """
             }
         }
     }
