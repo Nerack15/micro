@@ -35,9 +35,13 @@ pipeline {
         }
         stage('Deployment') {
             steps {
-                sh """
-                az login -u $AZ_USER -p $AZ_PASS
-                """
+                script{
+                    sh """
+                    az login -u $AZ_USER -p $AZ_PASS
+                    az account set --subscription b68641c8-eca9-416e-80c2-05e8fcb71cfc
+                    az aks get-credentials --resource-group nerack-resources --name nerack-cluster
+                    """
+                }
             }
         }
     }
