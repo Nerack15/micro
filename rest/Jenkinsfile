@@ -40,6 +40,8 @@ pipeline {
                     az login --service-principal --username 410daf6b-46a0-41bb-b592-19c34260fca4 --password uyn8Q~hbz4y9PNB_9ZBkB8KtwYYz5lrMfG4Ymc5P --tenant 10f7b6ca-75cb-4bc7-b585-9809d7531a43
                     az account set --subscription b68641c8-eca9-416e-80c2-05e8fcb71cfc
                     az aks get-credentials --resource-group nerack-resources --name nerack-cluster
+                    cd rest/k8s
+                    kubectl apply -f ms-rest.yaml
                     """
                 }
             }
