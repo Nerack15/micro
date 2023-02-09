@@ -14,10 +14,22 @@ pipeline {
                 }
             }
         }
-        stage('test') {
+        stage('test with Sonarqube') {
             steps {
-                //sh 'gradle docker'
-                echo 'test succesfull'
+                script{
+                    def scannerHome = tool 'Sonarqube'
+                    withSonarQubeEnv('Sonarqube'){
+                        sh"""
+                        cd rest 
+                        gradle sonarqube \
+                        -Dsonar.project=sonarqube \
+                        -Dsonar.host.url=http://10.0.187.245:9000 \
+                        -Dsonar.login=274e66b2b616791670b6cc2c4bc86ab44d5c6e10 \
+                        -D sonar.sourceEncoding=UTF-8 \
+                        -D sonar.language=java 
+                        """
+                    }
+                }
             }
         }
         stage('Build & Push Docker Image') {
