@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-        gradle 'Gradle 7.5.1'
-    }
     stages {
         stage('Build') {
             steps {
@@ -11,24 +8,6 @@ pipeline {
                 cd rest
                 gradle build
                 """
-                }
-            }
-        }
-        stage('test with Sonarqube') {
-            steps {
-                script{
-                    def scannerHome = tool 'Sonarqube'
-                    withSonarQubeEnv('Sonarqube'){
-                        sh"""
-                        cd rest 
-                        gradle sonarqube \
-                        -Dsonar.project=sonarqube \
-                        -Dsonar.host.url=http://10.0.187.245:9000 \
-                        -Dsonar.login=274e66b2b616791670b6cc2c4bc86ab44d5c6e10 \
-                        -D sonar.sourceEncoding=UTF-8 \
-                        -D sonar.language=java 
-                        """
-                    }
                 }
             }
         }
@@ -45,18 +24,6 @@ pipeline {
                 echo 'succesfull'
             }
         }
-        stage('Deployment') {
-            steps {
-                script{
-                    sh """
-                    az login --service-principal --username $AZ_USER --password $AZ_PASS --tenant $AZ_TENANT
-                    az account set --subscription b68641c8-eca9-416e-80c2-05e8fcb71cfc
-                    az aks get-credentials --resource-group nerack-resources --name nerack-cluster
-                    cd rest/k8s
-                    kubectl apply -f ms-rest.yaml
-                    """
-                }
-            }
-        }
     }
 }
+
