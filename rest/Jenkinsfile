@@ -6,7 +6,7 @@ pipeline {
                 script{
                 sh """
                 cd rest
-                gradle build
+                ./gradlew build
                 """
                 }
             }
