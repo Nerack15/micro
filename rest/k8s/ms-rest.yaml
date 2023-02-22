@@ -41,5 +41,28 @@ spec:
   type: ClusterIP       # Type of service
   selector:
     app: rest
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: micros-ingress
+  namespace: ms
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+      - micros.nerack
+    secretName: micros-secret
+  rules:
+  - host: micros.nerack
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: serviciorest
+            port:
+              number: 8080
 
 
