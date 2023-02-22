@@ -24,7 +24,7 @@ pipeline {
                         gradle sonarqube \
                         -Dsonar.project=sonarqube \
                         -Dsonar.host.url=http://192.168.2.143:9000 \
-                        -Dsonar.login=274e66b2b616791670b6cc2c4bc86ab44d5c6e10 \
+                        -Dsonar.login=e732d69b95a938a0991e308d1e0056549fbe0c23 \
                         -D sonar.sourceEncoding=UTF-8 \
                         -D sonar.language=java 
                         """
