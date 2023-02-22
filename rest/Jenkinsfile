@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Build & Push Docker Image') {
             agent {
-                label 'slave1'
+                label 'Slave1'
             }
             steps {
                 script{
