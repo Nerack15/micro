@@ -8,7 +8,7 @@ pipeline {
                 script{
                     sh """
                     cd rest
-                    sudo ./instalardocker.sh
+                    sh instalardocker.sh
                     docker ps -a
                     """
                 }
