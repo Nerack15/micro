@@ -1,0 +1,16 @@
+pipeline {
+    agent {
+          label 'docker'
+    }
+    stages {
+        stage('Intalling Docker in vm') {
+            steps {
+                script{
+                    sh """
+                    cd rest
+                    ./instalardocker.sh
+                    docker ps -a
+                    """
+                }
+            }
+        }
