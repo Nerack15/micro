@@ -23,8 +23,8 @@ pipeline {
                         cd rest 
                         gradle sonarqube \
                         -Dsonar.project=sonarqube \
-                        -Dsonar.host.url=http://192.168.2.143:9000 \
-                        -Dsonar.login=e732d69b95a938a0991e308d1e0056549fbe0c23 \
+                        -Dsonar.host.url=http://192.168.5.176:9000 \
+                        -Dsonar.login=591993b9056a1994d9271904d5e01cf40c7eab1b \
                         -D sonar.sourceEncoding=UTF-8 \
                         -D sonar.language=java 
                         """
@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Build & Push Docker Image') {
             agent {
-                label 'Slave1'
+                label 'docker'
             }
             steps {
                 script{
@@ -54,7 +54,7 @@ pipeline {
                     sh """
                     az login --service-principal --username $AZ_USER --password $AZ_PASS --tenant $AZ_TENANT
                     az account set --subscription b68641c8-eca9-416e-80c2-05e8fcb71cfc
-                    az aks get-credentials --resource-group nerack-resource --name nerack-k8s
+                    az aks get-credentials --resource-group nerack5-resource --name nerack5-k8s
                     cd rest/k8s
                     kubectl apply -f ms-rest.yaml
                     """
