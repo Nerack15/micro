@@ -54,7 +54,7 @@ pipeline {
                     sh """
                     az login --service-principal --username $AZ_USER --password $AZ_PASS --tenant $AZ_TENANT
                     az account set --subscription b68641c8-eca9-416e-80c2-05e8fcb71cfc
-                    az aks get-credentials --resource-group nerack5-resource --name nerack5-k8s
+                    az aks get-credentials --resource-group nerack-resource --name nerack-k8s
                     cd rest/k8s
                     kubectl apply -f ms-rest.yaml
                     """
